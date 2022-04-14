@@ -25,6 +25,11 @@ type Boon = {
   boon: string
 }
 
+type Requirement = {
+  god: string,
+  boons: string[]
+}
+
 function BoonChooser({ addBoon, currentBoons }: {
   addBoon: (boon: Boon) => void,
   currentBoons: Boon[]
@@ -81,6 +86,22 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
   )
 }
 
+function DualBoonList({ requirement, currentBoons }: {
+  requirement: Requirement | undefined,
+  currentBoons: Boon[]
+}) {
+  return requirement ? (
+    <>
+      { requirement.boons.map((boon, boonIndex) => (
+        <>
+        { boonIndex > 0 ? ', ' : null }
+        { currentBoons.findIndex(currentBoon => currentBoon.boon === boon) > -1 ? <strong>{boon}</strong> : <span>{boon}</span> }
+      </>
+      )) }
+    </>
+  ) : null
+}
+
 function App() {
   const [boons, setBoons] = useState<Boon[]>([])
 
@@ -116,12 +137,12 @@ function App() {
                   <Tr>
                     <Td rowSpan={2}>{boon.name}</Td>
                     <Td>{boon.gods[0]}</Td>
-                    <Td>{boon.requirements.find(requirement => requirement.god === boon.gods[0])?.boons.join(', ')}</Td>
+                    <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
                   </Tr>
 
                   <Tr>
                     <Td>{boon.gods[1]}</Td>
-                    <Td>{boon.requirements.find(requirement => requirement.god === boon.gods[1])?.boons.join(', ')}</Td>
+                    <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
                   </Tr>
                 </>
               )) }

@@ -9,15 +9,12 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 
-// import logo from './logo.svg'
 import './App.css'
 import boonData from './boons.json'
 
@@ -70,23 +67,23 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
         </Thead>
         <Tbody>
 
-          {boonsByGod.map((godBoons) => (
-            <>
-              <Tr>
-                <Td rowSpan={godBoons.length}>{godBoons[0].god}</Td>
-                <Td>{godBoons[0].boon}</Td>
-              </Tr>
+        { boonsByGod.map((godBoons) => (
+          <>
+            <Tr>
+              <Td rowSpan={godBoons.length}>{godBoons[0].god}</Td>
+              <Td>{godBoons[0].boon}</Td>
+            </Tr>
 
-              {
-                godBoons.splice(1).map((boon) => (
-                  <Tr>
-                    <Td>{boon.boon}</Td>
-                  </Tr>
+            {
+              godBoons.splice(1).map((boon) => (
+                <Tr>
+                  <Td>{boon.boon}</Td>
+                </Tr>
 
-                ))
-              }
-            </>
-          ))}
+              ))
+            }
+          </>
+        )) }
 
         </Tbody>
       </Table>
@@ -95,7 +92,6 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
   const [boons, setBoons] = useState<Boon[]>([])
 
   return (
@@ -105,6 +101,7 @@ function App() {
         <CurrentBoonList boons={boons} />
 
         <Divider />
+
         <Heading>Choose a Boon</Heading>
         <HStack>
           <BoonChooser addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
@@ -124,11 +121,12 @@ function App() {
             </Thead>
             <Tbody>
 
-              {boonData.dualBoons.map((boon) => (
+              { boonData.dualBoons.map((boon) => (
                 <>
                   <Tr>
                     <Td rowSpan={2}>{boon.name}</Td>
                     <Td>{boon.gods[0]}</Td>
+                    <Td>{boon.requirements.find(requirement => requirement.god === boon.gods[0])?.boons.join(', ')}</Td>
                   </Tr>
 
                   <Tr>
@@ -136,7 +134,7 @@ function App() {
                     <Td>{boon.requirements.find(requirement => requirement.god === boon.gods[1])?.boons.join(', ')}</Td>
                   </Tr>
                 </>
-                ))}
+              )) }
 
             </Tbody>
           </Table>

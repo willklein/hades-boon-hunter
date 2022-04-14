@@ -25,8 +25,9 @@ type Boon = {
   boon: string
 }
 
-function BoonChooser({ addBoon }: {
-  addBoon: (boon: Boon) => void
+function BoonChooser({ addBoon, currentBoons }: {
+  addBoon: (boon: Boon) => void,
+  currentBoons: Boon[]
 }) {
   const [god, setGod] = useState<God | null>(null)
   const setBoon = (boon: Boon) => {
@@ -38,7 +39,7 @@ function BoonChooser({ addBoon }: {
     <>
       { 
         god
-          ? boonData.boons[god]?.map((boon) => (<Button onClick={() => setBoon({god, boon})}>{boon}</Button>))
+          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button onClick={() => setBoon({god, boon})}>{boon}</Button>))
           : boonData.gods.map((god) => (<Button onClick={() => setGod(god as God)}>{god}</Button>))
       }
     </>
@@ -68,21 +69,10 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
         <Tbody>
 
         { boonsByGod.map((godBoons) => (
-          <>
-            <Tr>
-              <Td rowSpan={godBoons.length}>{godBoons[0].god}</Td>
-              <Td>{godBoons[0].boon}</Td>
-            </Tr>
-
-            {
-              godBoons.splice(1).map((boon) => (
-                <Tr>
-                  <Td>{boon.boon}</Td>
-                </Tr>
-
-              ))
-            }
-          </>
+          <Tr>
+            <Td>{godBoons[0].god}</Td>
+            <Td>{godBoons.map(boon => boon.boon).join(', ')}</Td>
+          </Tr>
         )) }
 
         </Tbody>
@@ -104,7 +94,7 @@ function App() {
 
         <Heading>Choose a Boon</Heading>
         <HStack>
-          <BoonChooser addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
+          <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
         </HStack>
 
         <Divider />

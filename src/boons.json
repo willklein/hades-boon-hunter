@@ -1,0 +1,60 @@
+{
+    "dualBoons": [
+        {
+            "name": "Curse of Drowning",
+            "gods": ["Ares", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Curse of Agony", "Curse of Pain", "Blade Dash", "Ares' Aid"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Flood Shot"]
+                }
+            ]
+        },
+        {
+            "name": "Mirage Shot",
+            "gods": ["Artemis", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "True Shot", "Hunter's Flare", "Artemis' Aid"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Tempest Strike", "Tempest Flourish", "Flood Shot", "Tidal Dash", "Poseidons' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Cold Fusion",
+            "gods": ["Demeter", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Demeter",
+                    "boons": ["Frost Strike", "Frost Flourish", "Mistral Dash", "Demeter's Aid"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Static Discharge"]
+                }
+            ]
+        },
+        {
+            "name": "Vengeful Mood",
+            "gods": ["Ares", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Curse of Agony", "Curse of Pain", "Curse of Vengeance"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Electric Shot", "Thunder Dash", "Heaven's Vengeance"]
+                }
+            ]
+        }
+    ]
+}

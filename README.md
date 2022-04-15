@@ -22,12 +22,11 @@ Choosing new boons
 - [x] shows a list of gods
 - [x] selecting a god shows their boons
 - [x] only remaining boons are available
-- [ ] fix: wrap the list of gods/boons when the list is bigger than the viewport width
 - [ ] indicate which gods have priority based on current boon progress
 
 Duo boon tracking
-- [ ] add data (incomplete)
-- [x] show a list of dual boons
+- [x] add data
+- [x] show a list of duo boons
 - [x] highlights a boon requirement if it has been chosen
 - [ ] highlight a duo boon if one or more requirements are met
 

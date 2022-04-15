@@ -148,7 +148,7 @@
             "Splitting Bolt"
         ]
     },
-    "dualBoons": [
+    "duoBoons": [
         {
             "name": "Curse of Drowning",
             "gods": ["Ares", "Poseidon"],

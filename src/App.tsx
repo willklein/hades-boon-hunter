@@ -6,8 +6,6 @@ import {
   Container,
   Divider,
   Heading,
-  HStack,
-  Stack,
   VStack,
   Table,
   Thead,
@@ -89,7 +87,7 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
   )
 }
 
-function DualBoonList({ requirement, currentBoons }: {
+function DuoBoonList({ requirement, currentBoons }: {
   requirement: Requirement | undefined,
   currentBoons: Boon[]
 }) {
@@ -126,7 +124,7 @@ function App() {
 
           <Divider />
 
-          <Heading>Dual Boons</Heading>
+          <Heading>Duo Boons</Heading>
           <TableContainer>
             <Table variant='simple'>
               <Thead>
@@ -138,17 +136,17 @@ function App() {
               </Thead>
               <Tbody>
 
-                { boonData.dualBoons.map((boon) => (
+                { boonData.duoBoons.map((boon) => (
                   <>
                     <Tr>
                       <Td rowSpan={2}>{boon.name}</Td>
                       <Td>{boon.gods[0]}</Td>
-                      <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
+                      <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
                     </Tr>
 
                     <Tr>
                       <Td>{boon.gods[1]}</Td>
-                      <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
+                      <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
                     </Tr>
                   </>
                 )) }

@@ -204,6 +204,342 @@
                     "boons": ["Lightning Strike", "Thunder Flourish", "Electric Shot", "Thunder Dash", "Heaven's Vengeance"]
                 }
             ]
+        },
+        {
+            "name": "Parting Shot",
+            "gods": ["Aphrodite", "Athena"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Aphrodite's Aid", "Passion Dash"]
+                },
+                {
+                    "god": "Athena",
+                    "boons": ["Divine Strike", "Divine Flourish", "Phalanx Shot", "Divine Dash", "Athena's Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Scintillating Feast",
+            "gods": ["Dionysus", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Dionysus",
+                    "boons": ["Trippy Shot or High Tolerance"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Electric Shot", "Thunder Dash", "Zeus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Merciful End",
+            "gods": ["Ares", "Athena"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Curse of Agony", "Curse of Pain"]
+                },
+                {
+                    "god": "Athena",
+                    "boons": ["Divine Strike", "Divine Flourish"]
+                }
+            ]
+        },
+        {
+            "name": "Lighting Rod",
+            "gods": ["Artemis", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "True Shot", "Hunter Dash", "Artemis' Aid"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Thunder Dash", "Electric Shot", "Zeus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Lighting Phalanx",
+            "gods": ["Athena", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Athena",
+                    "boons": ["Phalanx Shot"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Thunder Dash", "Electric Shot", "Zeus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Exclusive Access",
+            "gods": ["Dionysus", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Dionysus",
+                    "boons": ["Drunken Strike", "Drunken Flourish", "Trippy Shot", "Tripply Flare", "Drunken Dash", "Dionysus' Aid"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Tempest Strike", "Tempest Flourish", "Flood Shot", "Tidal Dash", "Poseidon's Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Heart Rend",
+            "gods": ["Aphrodite", "Artemis"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash"]
+                },
+                {
+                    "god": "Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "True Shot"]
+                }
+            ]
+        },
+        {
+            "name": "Hunting Blades",
+            "gods": ["Ares", "Artemis"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Slicing Shot"]
+                },
+                {
+                    "god": "Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "Hunter Dash", "Artemis' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Deadly Reversal",
+            "gods": ["Artemis", "Athena"],
+            "requirements":[
+                {
+                    "god":"Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "True Shot", "Hunter's Flair", "Artemis' Aid"]
+                },
+                {
+                    "god": "Athena",
+                    "boons": ["Divine Strike", "Divine Flourish"]
+                }
+            ]
+        },
+        {
+            "name": "Curse of Longing",
+            "gods": ["Aphrodite", "Ares"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash"]
+                },
+                {
+                    "god": "Ares",
+                    "boons": ["Curse of Agony", "Curse of Pain"]
+                }
+            ]
+        },
+        {
+            "name": "Low Tolerance",
+            "gods": ["Aphrodite", "Dionysus"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash"]
+                },
+                {
+                    "god": "Dionysus",
+                    "boons": ["Drunken Strike", "Drunken Flourish", "Drunken Dash", "Dionysus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Sea Storm",
+            "gods": ["Poseidon", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Poseidon",
+                    "boons": ["Tempest Strike", "Tempest Flourish", "Flood Shot", "Tidal Dash", "Poseidon's Aid"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Electric Shot", "Thunder Dash", "Zeus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Sweet Nectar",
+            "gods": ["Aphrodite", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash or Aphrodite's Aid"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Tempest Strike", "Tempest Flourish", "Flood Shot", "Tidal Dash", "Poseidon's Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Ice Wine",
+            "gods": ["Demeter", "Dionysus"],
+            "requirements":[
+                {
+                    "god":"Demeter",
+                    "boons": ["Frost Strike", "Frost Flourish", "Mistral Dash", "Demeter's Aid"]
+                },
+                {
+                    "god": "Dionysus",
+                    "boons": ["Trippy Shot"]
+                }
+            ]
+        },
+        {
+            "name": "Blizzard Shot",
+            "gods": ["Demeter", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Demeter",
+                    "boons": ["Frost Strike", "Frost Flourish", "Mistral Dash", "Snow Burst"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Flood Shot"]
+                }
+            ]
+        },
+        {
+            "name": "Freezing Vortex",
+            "gods": ["Ares", "Demeter"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Slicing Flare", "Slicing Shot"]
+                },
+                {
+                    "god": "Demeter",
+                    "boons": ["Demeter's Aid", "Frost Flourish", "Frost Strike", "Mistral Dash"]
+                }
+            ]
+        },
+        {
+            "name": "Unshakable Mettle",
+            "gods": ["Athena", "Poseidon"],
+            "requirements":[
+                {
+                    "god":"Athena",
+                    "boons": ["Divine Strike", "Divine Dash"]
+                },
+                {
+                    "god": "Poseidon",
+                    "boons": ["Tempest Strike", "Tidal Dash", "Flood Shot"]
+                }
+            ]
+        },
+        {
+            "name": "Stubborn Roots",
+            "gods": ["Athena", "Demeter"],
+            "requirements":[
+                {
+                    "god":"Athena",
+                    "boons": ["Divine Strike", "Divine Dash", "Athena's Aid"]
+                },
+                {
+                    "god": "Demeter",
+                    "boons": ["Frost Strike", "Frost Flourish", "Demeter's Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Crystal Clarity",
+            "gods": ["Artemis", "Demeter"],
+            "requirements":[
+                {
+                    "god":"Artemis",
+                    "boons": ["Deadly Strike", "Deadly Flourish", "Hunter Dash", "Artemis' Aid"]
+                },
+                {
+                    "god": "Demeter",
+                    "boons": ["Crystal Beam"]
+                }
+            ]
+        },
+        {
+            "name": "Smoldering Air",
+            "gods": ["Aphrodite", "Zeus"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash", "Aphrodite's Aid"]
+                },
+                {
+                    "god": "Zeus",
+                    "boons": ["Lightning Strike", "Thunder Flourish", "Electric Shot", "Thunder Dash", "Zeus' Aid"]
+                }
+            ]
+        },
+        {
+            "name": "Calculated Risk",
+            "gods": ["Athena", "Dionysus"],
+            "requirements":[
+                {
+                    "god":"Athena",
+                    "boons": ["Athena's Aid", "Divine Dash", "Divine Flourish", "Divine Strike"]
+                },
+                {
+                    "god": "Dionysus",
+                    "boons": ["Dionysus' Aid", "Drunken Dash", "Drunken Flourish", "Drunken Strike"]
+                }
+            ]
+        },
+        {
+            "name": "Curse of Nausea",
+            "gods": ["Ares", "Dionysus"],
+            "requirements":[
+                {
+                    "god":"Ares",
+                    "boons": ["Curse of Agony", "Curse of Vengeance", "Curse of Pain"]
+                },
+                {
+                    "god": "Dionysus",
+                    "boons": ["Drunken Strike", "Drunken Flourish", "Drunken Dash"]
+                }
+            ]
+        },
+        {
+            "name": "Splitting Headache",
+            "gods": ["Artemis", "Dionysus"],
+            "requirements":[
+                {
+                    "god":"Artemis",
+                    "boons": ["Artemis' Aid", "Deadly Flourish", "Deadly Strike", "True Shot"]
+                },
+                {
+                    "god": "Dionysus",
+                    "boons": ["Dionysus' Aid", "Drunken Dash", "Drunken Flourish", "Drunken Strike"]
+                }
+            ]
+        },
+        {
+            "name": "Cold Embrace",
+            "gods": ["Aphrodite", "Demeter"],
+            "requirements":[
+                {
+                    "god":"Aphrodite",
+                    "boons": ["Heartbreak Strike", "Passion Dash", "Heartbreak Flourish", "Aphrodite's Aid"]
+                },
+                {
+                    "god": "Demeter",
+                    "boons": ["Crystal Beam"]
+                }
+            ]
         }
     ]
 }

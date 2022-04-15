@@ -1,10 +1,13 @@
 import { useState } from 'react'
 
 import {
+  Box,
   Button,
+  Container,
   Divider,
   Heading,
   HStack,
+  Stack,
   VStack,
   Table,
   Thead,
@@ -107,50 +110,54 @@ function App() {
 
   return (
     <div className="App">
-      <VStack>
-        <Heading>Current Boons</Heading>
-        <CurrentBoonList boons={boons} />
+      <Container maxW="container.l">
+        <VStack>
+          <Heading>Current Boons</Heading>
+          <CurrentBoonList boons={boons} />
 
-        <Divider />
+          <Divider />
 
-        <Heading>Choose a Boon</Heading>
-        <HStack>
-          <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
-        </HStack>
+          <Heading>Choose a Boon</Heading>
+          <Box w="100%">
+          <VStack>
+            <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
+          </VStack>
+          </Box>
 
-        <Divider />
+          <Divider />
 
-        <Heading>Dual Boons</Heading>
-        <TableContainer>
-          <Table variant='simple'>
-            <Thead>
-              <Tr>
-                <Th>Boon</Th>
-                <Th>Gods</Th>
-                <Th>Requirements</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
+          <Heading>Dual Boons</Heading>
+          <TableContainer>
+            <Table variant='simple'>
+              <Thead>
+                <Tr>
+                  <Th>Boon</Th>
+                  <Th>Gods</Th>
+                  <Th>Requirements</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
 
-              { boonData.dualBoons.map((boon) => (
-                <>
-                  <Tr>
-                    <Td rowSpan={2}>{boon.name}</Td>
-                    <Td>{boon.gods[0]}</Td>
-                    <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
-                  </Tr>
+                { boonData.dualBoons.map((boon) => (
+                  <>
+                    <Tr>
+                      <Td rowSpan={2}>{boon.name}</Td>
+                      <Td>{boon.gods[0]}</Td>
+                      <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
+                    </Tr>
 
-                  <Tr>
-                    <Td>{boon.gods[1]}</Td>
-                    <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
-                  </Tr>
-                </>
-              )) }
+                    <Tr>
+                      <Td>{boon.gods[1]}</Td>
+                      <Td><DualBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
+                    </Tr>
+                  </>
+                )) }
 
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </VStack>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </VStack>
+      </Container>
     </div>
   )
 }

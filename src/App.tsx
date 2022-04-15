@@ -19,6 +19,13 @@ import {
 import './App.css'
 import boonData from './boons.json'
 
+
+const duoBoonLookup = boonData.duoBoons.reduce((boonAccumulator, duoBoon) => {
+  return [...boonAccumulator, ...duoBoon.requirements[0].boons, ...duoBoon.requirements[1].boons]
+}, [] as string[])
+
+console.log('duo boon list', duoBoonLookup)
+
 type God = 'Aphrodite' | 'Ares' | 'Artemis' | 'Athena' | 'Demeter' | 'Dionysus' | 'Poseidon' | 'Zeus'
 
 type Boon = {
@@ -45,7 +52,7 @@ function BoonChooser({ addBoon, currentBoons }: {
     <>
       { 
         god
-          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button onClick={() => setBoon({god, boon})}>{boon}</Button>))
+          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Button>))
           : boonData.gods.map((god) => (<Button onClick={() => setGod(god as God)}>{god}</Button>))
       }
     </>

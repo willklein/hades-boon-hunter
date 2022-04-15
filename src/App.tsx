@@ -113,6 +113,10 @@ function DuoBoonList({ requirement, currentBoons }: {
 function App() {
   const [boons, setBoons] = useState<Boon[]>([])
 
+  const resetData = () => {
+    setBoons([])
+  }
+
   return (
     <div className="App">
       <Container maxW="container.l">
@@ -161,6 +165,8 @@ function App() {
               </Tbody>
             </Table>
           </TableContainer>
+
+          <Button onClick={resetData}>Reset Data</Button>
         </VStack>
       </Container>
     </div>

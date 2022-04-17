@@ -12,7 +12,6 @@ specifiers:
   '@types/react-dom': ^17.0.10
   '@vitejs/plugin-react': ^1.0.7
   framer-motion: ^6.3.0
-  pnpm: '3'
   react: ^17.0.2
   react-dom: ^17.0.2
   react-router-dom: ^6.3.0
@@ -32,7 +31,6 @@ devDependencies:
   '@types/react': 17.0.44
   '@types/react-dom': 17.0.15
   '@vitejs/plugin-react': 1.3.1
-  pnpm: 3.8.1
   typescript: 4.6.3
   vite: 2.9.5
 
@@ -1894,12 +1892,6 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-    dev: true
-
-  /pnpm/3.8.1:
-    resolution: {integrity: sha512-uINy/U+TNvUHInG1l0/NrgDosUtafn9BrHjP5+v+ojpw+zb/lgXjkQmMHB4461LKezlNoBb7+0JOrNnm5JhZFg==}
-    engines: {node: '>=8.15'}
-    hasBin: true
     dev: true
 
   /popmotion/11.0.3:

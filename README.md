@@ -17,25 +17,41 @@ Current boon tracking
 - [x] organized by god
 - [ ] show which boons unlock duo boons
 - [ ] show which boons unlock legendary boons
+- [ ] deleting current boons
+- [ ] summarizing buffs
 
 Choosing new boons
 - [x] shows a list of gods
 - [x] selecting a god shows their boons
 - [x] only remaining boons are available
 - [ ] indicate which gods have priority based on current boon progress
+  - [ ] gods who have a duo boon requirement met
+  - [ ] gods who have a legendary boon requirement met
+  - [ ] show a count of possible duo & legendary boons
+- [ ] indicate which boons will unlock a new duo or legendary boon
+- [ ] allow cancelling a god selection
+- [ ] highlighting synergies
 
 Duo boon tracking
 - [x] add data
 - [x] show a list of duo boons
 - [x] highlights a boon requirement if it has been chosen
+- [x] checklist for acquired duo boons
 - [ ] highlight a duo boon if one or more requirements are met
+- [ ] sort duo boons based on requirements met
 
 Legendary boon tracking
 - [ ] add data
 - [ ] show a list of legendary boons
 - [ ] highlight a boon requirement if it has been chosen
+- [ ] checklist for acquired legendary boons
 - [ ] highlight a legendary boon if one or more requirements are met
 
 Persistence
 - [ ] track what boons have been unlocked across run throughs
 - [ ] track against prophecies
+
+## Related Tools
+
+https://coda.io/@sig/hades - duo boon table on Coda
+https://coda.io/@sig/hadesmobile - legendary & duo boon table on Coda

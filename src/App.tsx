@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {
   Box,
   Button,
+  Checkbox,
   Container,
   Divider,
   Heading,
@@ -150,6 +151,7 @@ function App() {
                 { boonData.duoBoons.map((boon) => (
                   <>
                     <Tr>
+                      <Td rowSpan={2}><Checkbox /></Td>
                       <Td rowSpan={2}>{boon.name}</Td>
                       <Td>{boon.gods[0]}</Td>
                       <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>

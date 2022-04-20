@@ -37,6 +37,7 @@ Duo boon tracking
 - [x] show a list of duo boons
 - [x] highlights a boon requirement if it has been chosen
 - [x] checklist for acquired duo boons
+- [x] sort duo boons based on unlock status
 - [ ] highlight a duo boon if one or more requirements are met
 - [ ] sort duo boons based on requirements met
 

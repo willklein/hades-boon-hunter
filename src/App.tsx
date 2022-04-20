@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 
 import {
-  Box,
   Button,
   Checkbox,
   Container,
   Divider,
-  Flex,
   Heading,
-  Stack,
   VStack,
   Table,
   Thead,
@@ -18,7 +15,6 @@ import {
   Td,
   TableContainer,
   Wrap,
-  WrapItem,
 } from '@chakra-ui/react'
 
 import './App.css'
@@ -45,7 +41,7 @@ interface DuoBoon {
 }
 
 
-const duoBoonData = [...boonData.duoBoons]
+let duoBoonData = [...boonData.duoBoons]
 
 const getKey = (name: string) => name.replace(/\s/g , "-")
 
@@ -67,8 +63,8 @@ function BoonChooser({ addBoon, currentBoons }: {
     <Wrap spacing='12px'>
       { 
         god
-          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Wrap as={Button} key={`boon-chooser-boon-${getKey(boon)}`} onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Wrap>))
-          : boonData.gods.map((god) => (<Wrap as={Button} key={`boon-chooser-${god}`} onClick={() => setGod(god as God)}>{god}</Wrap>))
+          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button key={`boon-chooser-boon-${getKey(boon)}`} onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Button>))
+          : boonData.gods.map((god) => (<Button key={`boon-chooser-${god}`} onClick={() => setGod(god as God)}>{god}</Button>))
       }
     </Wrap>
   )
@@ -145,6 +141,14 @@ function App() {
     setBoons([])
   }
 
+  duoBoonData.sort((duoBoonA, duoBoonB) => (duoBoons[duoBoonA.name] ? 1 : 0) - (duoBoons[duoBoonB.name] ? 1 : 0))
+
+  const addBoon = (newBoon: Boon) => {
+    setBoons([...boons, newBoon])
+
+    duoBoonData = [...duoBoonData]
+  }
+
   return (
     <div className="App">
       <Container maxW="container.m" w="100%">
@@ -156,7 +160,7 @@ function App() {
 
           <Heading>Choose a Boon</Heading>
           
-          <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
+          <BoonChooser currentBoons={boons} addBoon={addBoon} />
 
           <Divider />
 
@@ -165,6 +169,7 @@ function App() {
             <Table variant='simple'>
               <Thead>
                 <Tr>
+                  <Th>Unlocked</Th>
                   <Th>Boon</Th>
                   <Th>Gods</Th>
                   <Th>Requirements</Th>

@@ -225,7 +225,7 @@
             "requirements":[
                 {
                     "god":"Dionysus",
-                    "boons": ["Trippy Shot or High Tolerance"]
+                    "boons": ["Trippy Shot", "High Tolerance"]
                 },
                 {
                     "god": "Zeus",
@@ -379,7 +379,7 @@
             "requirements":[
                 {
                     "god":"Aphrodite",
-                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash or Aphrodite's Aid"]
+                    "boons": ["Heartbreak Strike", "Heartbreak Flourish", "Crush Shot", "Passion Dash", "Aphrodite's Aid"]
                 },
                 {
                     "god": "Poseidon",

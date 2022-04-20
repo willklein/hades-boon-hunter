@@ -6,7 +6,9 @@ import {
   Checkbox,
   Container,
   Divider,
+  Flex,
   Heading,
+  Stack,
   VStack,
   Table,
   Thead,
@@ -15,6 +17,8 @@ import {
   Th,
   Td,
   TableContainer,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react'
 
 import './App.css'
@@ -60,13 +64,13 @@ function BoonChooser({ addBoon, currentBoons }: {
   }
 
   return (
-    <React.Fragment>
+    <Wrap spacing='12px'>
       { 
         god
-          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button key={`boon-chooser-boon-${getKey(boon)}`} onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Button>))
-          : boonData.gods.map((god) => (<Button key={`boon-chooser-${god}`} onClick={() => setGod(god as God)}>{god}</Button>))
+          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Wrap as={Button} key={`boon-chooser-boon-${getKey(boon)}`} onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Wrap>))
+          : boonData.gods.map((god) => (<Wrap as={Button} key={`boon-chooser-${god}`} onClick={() => setGod(god as God)}>{god}</Wrap>))
       }
-    </React.Fragment>
+    </Wrap>
   )
 }
 
@@ -143,7 +147,7 @@ function App() {
 
   return (
     <div className="App">
-      <Container maxW="container.l">
+      <Container maxW="container.m" w="100%">
         <VStack>
           <Heading>Current Boons</Heading>
           <CurrentBoonList boons={boons} />
@@ -151,11 +155,8 @@ function App() {
           <Divider />
 
           <Heading>Choose a Boon</Heading>
-          <Box w="100%">
-          <VStack>
-            <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
-          </VStack>
-          </Box>
+          
+          <BoonChooser currentBoons={boons} addBoon={(newBoon: Boon) => { setBoons([...boons, newBoon])}} />
 
           <Divider />
 

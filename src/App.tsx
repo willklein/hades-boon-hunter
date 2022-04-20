@@ -20,6 +20,7 @@ import {
 import './App.css'
 import boonData from './boons.json'
 
+import useStickyState from './useStickyStorage'
 
 const duoBoonLookup = boonData.duoBoons.reduce((boonAccumulator, duoBoon) => {
   return [...boonAccumulator, ...duoBoon.requirements[0].boons, ...duoBoon.requirements[1].boons]
@@ -111,8 +112,36 @@ function DuoBoonList({ requirement, currentBoons }: {
   ) : null
 }
 
+type DuoBoonMap = Record<string, boolean>
+
+interface DuoBoon {
+  name: string
+}
+
+
+const duoBoonMap = boonData.duoBoons.reduce((boonMap: DuoBoonMap, duoBoon: DuoBoon) => {
+  boonMap[duoBoon.name] = false
+
+  return boonMap
+}, {})
+
 function App() {
-  const [boons, setBoons] = useState<Boon[]>([])
+  const [boons, setBoons] = useStickyState<Boon[]>([], 'boons')
+  const [duoBoons, setDuoBoons] = useStickyState<DuoBoonMap>(duoBoonMap, 'duoBoon')
+
+
+  console.log('duoBoons on render', duoBoons)
+
+
+  const toggleDuoBoon = (duoBoonKey: string, value: boolean) => {
+    console.log('toggleDuoBoon', duoBoonKey, value)
+
+    console.log('duoBoons', duoBoons)
+    setDuoBoons({
+      ...duoBoons,
+      [duoBoonKey]: value
+    })
+  }
 
   const resetData = () => {
     setBoons([])
@@ -151,7 +180,7 @@ function App() {
                 { boonData.duoBoons.map((boon) => (
                   <>
                     <Tr>
-                      <Td rowSpan={2}><Checkbox /></Td>
+                      <Td rowSpan={2}><Checkbox onChange={(event) => toggleDuoBoon(boon.name, event.target.checked)} isChecked={duoBoons[boon.name]}/></Td>
                       <Td rowSpan={2}>{boon.name}</Td>
                       <Td>{boon.gods[0]}</Td>
                       <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>

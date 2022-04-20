@@ -48,7 +48,7 @@ Legendary boon tracking
 - [ ] highlight a legendary boon if one or more requirements are met
 
 Persistence
-- [ ] track what boons have been unlocked across run throughs
+- [x] track what boons have been unlocked across run throughs
 - [ ] track against prophecies
 
 ## Related Tools

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import {
   Box,
@@ -22,12 +22,6 @@ import boonData from './boons.json'
 
 import useStickyState from './useStickyStorage'
 
-const duoBoonLookup = boonData.duoBoons.reduce((boonAccumulator, duoBoon) => {
-  return [...boonAccumulator, ...duoBoon.requirements[0].boons, ...duoBoon.requirements[1].boons]
-}, [] as string[])
-
-console.log('duo boon list', duoBoonLookup)
-
 type God = 'Aphrodite' | 'Ares' | 'Artemis' | 'Athena' | 'Demeter' | 'Dionysus' | 'Poseidon' | 'Zeus'
 
 type Boon = {
@@ -40,6 +34,21 @@ type Requirement = {
   boons: string[]
 }
 
+type DuoBoonMap = Record<string, boolean>
+
+interface DuoBoon {
+  name: string
+}
+
+
+const duoBoonData = [...boonData.duoBoons]
+
+const getKey = (name: string) => name.replace(/\s/g , "-")
+
+const duoBoonLookup = duoBoonData.reduce((duoBoonAccumulator, duoBoon) => {
+  return [...duoBoonAccumulator, ...duoBoon.requirements[0].boons, ...duoBoon.requirements[1].boons]
+}, [] as string[])
+
 function BoonChooser({ addBoon, currentBoons }: {
   addBoon: (boon: Boon) => void,
   currentBoons: Boon[]
@@ -51,13 +60,13 @@ function BoonChooser({ addBoon, currentBoons }: {
   }
 
   return (
-    <>
+    <React.Fragment>
       { 
         god
-          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Button>))
-          : boonData.gods.map((god) => (<Button onClick={() => setGod(god as God)}>{god}</Button>))
+          ? boonData.boons[god].filter((boon) => currentBoons.findIndex((currentBoon) => currentBoon.boon === boon) === -1).map((boon) => (<Button key={`boon-chooser-boon-${getKey(boon)}`} onClick={() => setBoon({god, boon})}>{boon} ({duoBoonLookup.filter(b => b === boon).length})</Button>))
+          : boonData.gods.map((god) => (<Button key={`boon-chooser-${god}`} onClick={() => setGod(god as God)}>{god}</Button>))
       }
-    </>
+    </React.Fragment>
   )
 }
 
@@ -84,7 +93,7 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
         <Tbody>
 
         { boonsByGod.map((godBoons) => (
-          <Tr>
+          <Tr key={`currentBoons-${godBoons[0].god}`}>
             <Td>{godBoons[0].god}</Td>
             <Td>{godBoons.map(boon => boon.boon).join(', ')}</Td>
           </Tr>
@@ -96,30 +105,22 @@ function CurrentBoonList({ boons }: { boons: Boon[] }) {
   )
 }
 
-function DuoBoonList({ requirement, currentBoons }: {
+const DuoBoonList = ({ requirement, currentBoons }: {
   requirement: Requirement | undefined,
   currentBoons: Boon[]
-}) {
-  return requirement ? (
-    <>
-      { requirement.boons.map((boon, boonIndex) => (
-        <>
-        { boonIndex > 0 ? ', ' : null }
-        { currentBoons.findIndex(currentBoon => currentBoon.boon === boon) > -1 ? <strong>{boon}</strong> : <span>{boon}</span> }
-      </>
-      )) }
-    </>
-  ) : null
-}
-
-type DuoBoonMap = Record<string, boolean>
-
-interface DuoBoon {
-  name: string
-}
+}) => (
+  <>
+    { requirement?.boons.map((boon, boonIndex) => (
+        <React.Fragment key={`duo-boon-list-${boonIndex}`}>
+          { boonIndex > 0 ? ', ' : null }
+          { currentBoons.findIndex(currentBoon => currentBoon.boon === boon) > -1 ? <strong>{boon}</strong> : <span>{boon}</span> }
+        </React.Fragment>
+    )) } 
+  </>
+)
 
 
-const duoBoonMap = boonData.duoBoons.reduce((boonMap: DuoBoonMap, duoBoon: DuoBoon) => {
+const duoBoonMap = duoBoonData.reduce((boonMap: DuoBoonMap, duoBoon: DuoBoon) => {
   boonMap[duoBoon.name] = false
 
   return boonMap
@@ -129,21 +130,14 @@ function App() {
   const [boons, setBoons] = useStickyState<Boon[]>([], 'boons')
   const [duoBoons, setDuoBoons] = useStickyState<DuoBoonMap>(duoBoonMap, 'duoBoon')
 
-
-  console.log('duoBoons on render', duoBoons)
-
-
   const toggleDuoBoon = (duoBoonKey: string, value: boolean) => {
-    console.log('toggleDuoBoon', duoBoonKey, value)
-
-    console.log('duoBoons', duoBoons)
     setDuoBoons({
       ...duoBoons,
       [duoBoonKey]: value
     })
   }
 
-  const resetData = () => {
+  const resetBoons = () => {
     setBoons([])
   }
 
@@ -177,27 +171,27 @@ function App() {
               </Thead>
               <Tbody>
 
-                { boonData.duoBoons.map((boon) => (
-                  <>
-                    <Tr>
+                { duoBoonData.map((boon, duoBoonIndex) => (
+                  <React.Fragment key={`duo-boon-${getKey(boon.name)}`}>
+                    <Tr key={`duo-boon-${getKey(boon.name)}-0`}>
                       <Td rowSpan={2}><Checkbox onChange={(event) => toggleDuoBoon(boon.name, event.target.checked)} isChecked={duoBoons[boon.name]}/></Td>
                       <Td rowSpan={2}>{boon.name}</Td>
                       <Td>{boon.gods[0]}</Td>
                       <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[0])} currentBoons={boons} /></Td>
                     </Tr>
 
-                    <Tr>
+                    <Tr key={`duo-boon-${getKey(boon.name)}-1`}>
                       <Td>{boon.gods[1]}</Td>
                       <Td><DuoBoonList requirement={boon.requirements.find(requirement => requirement.god === boon.gods[1])} currentBoons={boons} /></Td>
                     </Tr>
-                  </>
+                  </React.Fragment>
                 )) }
 
               </Tbody>
             </Table>
           </TableContainer>
 
-          <Button onClick={resetData}>Reset Data</Button>
+          <Button onClick={resetBoons}>New Runthrough</Button>
         </VStack>
       </Container>
     </div>
